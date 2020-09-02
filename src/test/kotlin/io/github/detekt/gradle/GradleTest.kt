@@ -16,13 +16,24 @@ object GradleTest: Spek({
 
     describe("describe") {
         File(projectDir, "build.gradle").writeText("""
+            buildscript {
+                repositories {
+                    mavenCentral()
+                }
+                dependencies {
+                    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0"
+                    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.4.0"
+                }
+            }
             plugins {
                 id 'org.jetbrains.kotlin.jvm' version '1.4.0'
                 id "io.github.detekt.gradle.compiler-plugin"
             }
-            repositories {
-                mavenCentral()
-            }
+            apply plugin: "kotlin"
+            apply plugin: "detekt-compiler-plugin"
+//            repositories {
+//                mavenCentral()
+//            }
             detekt {
                 buildUponDefaultConfig = true
             }
@@ -40,7 +51,7 @@ object GradleTest: Spek({
         """.trimIndent())
 
         it("runs without error") {
-            val result = runner.withArguments("compileKotlin", "--info").build()
+            val result = runner.withArguments("compileKotlin").build()
 
             assertThat(result.task(":compileKotlin")?.outcome).isEqualTo(TaskOutcome.SUCCESS)
         }
