@@ -1,6 +1,7 @@
 package io.github.detekt.compiler.plugin
 
 import org.jetbrains.kotlin.config.CompilerConfigurationKey
+import java.io.File
 
 object Options {
 
@@ -9,6 +10,7 @@ object Options {
     const val config = "config"
     const val baseline: String = "baseline"
     const val useDefaultConfig: String = "useDefaultConfig"
+    const val projectPath: String = "projectPath"
 }
 
 object Keys {
@@ -18,4 +20,5 @@ object Keys {
     val CONFIG = CompilerConfigurationKey.create<String>(Options.config)
     val BASELINE = CompilerConfigurationKey.create<String>(Options.baseline)
     val USE_DEFAULT_CONFIG = CompilerConfigurationKey.create<String>(Options.useDefaultConfig)
+    val PROJECT_PATH = CompilerConfigurationKey.create<File>(Options.projectPath)
 }

@@ -27,6 +27,7 @@ class DetektKotlinCompilerPlugin : KotlinCompilerPluginSupportPlugin {
             add(SubpluginOption(Options.config, extension.config.joinToString(",")))
             add(SubpluginOption(Options.isEnabled, extension.isEnabled.toString()))
             add(SubpluginOption(Options.useDefaultConfig, extension.buildUponDefaultConfig.toString()))
+            add(SubpluginOption(Options.projectPath, project.projectDir.toString()))
         }
 
         extension.baseline?.let { options.add(SubpluginOption(Options.baseline, it.toString())) }
