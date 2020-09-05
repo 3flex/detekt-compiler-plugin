@@ -24,7 +24,7 @@ class DetektComponentRegistrar : ComponentRegistrar {
 
         AnalysisHandlerExtension.registerExtension(
             project,
-            DetektAnalysisExtension(messageCollector, configuration.toSpec(messageCollector))
+            DetektAnalysisExtension(messageCollector, configuration.toSpec(messageCollector), configuration.get(Keys.PROJECT_PATH))
         )
     }
 }
