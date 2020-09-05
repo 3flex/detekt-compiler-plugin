@@ -24,13 +24,7 @@ plugins {
     `maven-publish`
     `java-gradle-plugin`
     id("com.gradle.plugin-publish")
-    id("io.github.detekt.gradle.compiler-plugin")
     id("com.github.johnrengelman.shadow")
-}
-
-detekt {
-    debug = true
-    isEnabled = System.getProperty("selfAnalysis") != null
 }
 
 repositories {
